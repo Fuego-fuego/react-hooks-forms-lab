@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import ShoppingList from "./ShoppingList";
 import Header from "./Header";
 import itemData from "../data/items";
+import ItemForm from "./ItemForm";
+
 
 function App() {
   const [items, setItems] = useState(itemData);
@@ -11,10 +13,18 @@ function App() {
     setIsDarkMode((isDarkMode) => !isDarkMode);
   }
 
+  function onItemFormSubmit (newItem){
+
+    
+
+  setItems([...items], newItem)
+  }
+
   return (
     <div className={"App " + (isDarkMode ? "dark" : "light")}>
       <Header isDarkMode={isDarkMode} onDarkModeClick={handleDarkModeClick} />
       <ShoppingList items={items} />
+      <ItemForm  onItemFormSubmit ={onItemFormSubmit}/>
     </div>
   );
 }
